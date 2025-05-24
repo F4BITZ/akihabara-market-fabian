@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "https://f4bitz.github.io")
 @RestController // Indica que esta clase es un controlador REST
 @RequestMapping("/productos") // Ruta base para todos los endpoints: /productos
 public class ProductoOtakuController {
