@@ -1,17 +1,23 @@
-# Usa una imagen base de Java (compatible con tu versión de JDK, en tu caso JDK 20 o 21)
+# Imagen base con Java + Alpine
 FROM eclipse-temurin:21-jdk-alpine
 
-# Autor (opcional)
 LABEL authors="Fabián Flórez"
 
-# Directorio dentro del contenedor
+# Establece el directorio de trabajo
 WORKDIR /app
 
-# Copia el archivo .jar al contenedor (ajusta el nombre según tu build)
-COPY target/AkihabaraMarket-0.0.1-SNAPSHOT.jar app.jar
+# Copia el proyecto entero (incluye pom.xml, src, mvnw, etc.)
+COPY . .
 
-# Expone el puerto 8080
+# Da permisos al wrapper de Maven (por si hace falta)
+RUN chmod +x mvnw
+
+# Compila el proyecto y genera el .jar
+RUN ./mvnw clean package -DskipTests
+
+# Expone el puerto de la app
 EXPOSE 8080
 
-# Comando para ejecutar la aplicación Spring Boot
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Ejecuta el .jar compilado
+CMD ["java", "-jar", "target/AkihabaraMarket-0.0.1-SNAPSHOT.jar"]
+
