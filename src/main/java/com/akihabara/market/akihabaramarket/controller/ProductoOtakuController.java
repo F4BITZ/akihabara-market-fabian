@@ -48,4 +48,9 @@ public class ProductoOtakuController {
     public void delete(@PathVariable Long id){
         repo.deleteById(id); // Elimina el producto si existe
     }
+
+    @GetMapping("/")
+    public String home() {
+        return "✅ Akihabara Market API en funcionamiento. Visita /swagger-ui.html para la documentación.";
+    }
 }
