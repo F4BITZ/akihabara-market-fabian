@@ -17,6 +17,10 @@ Esta API permite realizar operaciones CRUD sobre productos como figuras, mangas 
   https://akihabara-market-fabian.onrender.com/h2-console  
   (JDBC URL: `jdbc:h2:mem:otaku`)
 
+> ⚠️ **Aviso:**  
+> Render puede tardar unos segundos en iniciar el servicio si ha estado inactivo.  
+> Si al abrir el enlace aparece un error (como 502 o pantalla negra), espere unos segundos y actualice la página.
+
 ---
 
 ## 🚀 Tecnologías utilizadas
